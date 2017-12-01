@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>Proxi - find King county's closest</title>
+        <style>
+            #map {
+                height: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 align="center">Proxi - find King county's closest</h1>
+        <div>
+        <pre>
+            /proxi/health-check : A simple health check endpoint,
+                        returns : Http/200 and "ok"
+
+            /proxi/status       : Current status of the proxi service
+                        returns : index status
+
+            /proxi/indexKML     : indexes a new kML file into proxiService
+                        accepts : "path" - http path to the kml file
+                        returns : http/200
+
+            /proxi/find         : query endpoint for proxi service
+                        accepts : "lat"  - lattitude of target point
+                                  "long" - longitude of target point
+                                  "size" - size of the resultset
+                        returns : json array of placemarks
+        </pre>
+        </div>
+        <div id="map"></div>
+        <script>
+
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 11,
+                    center: {lat: 47.5397050, lng: -122.2990109}
+                });
+
+                var ctaLayer = new google.maps.KmlLayer({
+                    url: 'https://podiyan.neocities.org/proxi.kml',
+                    map: map
+                });
+            }
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1ieShlO1AIQVzPJASxrmN1CjejAu3JW4&callback=initMap">
+        </script>
+    </body>
+</html>
+

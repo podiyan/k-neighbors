@@ -1,0 +1,7 @@
+{
+    "port": 8000,
+    "persistence":{
+        "type":"memory",
+        "size":1000
+    }
+}
